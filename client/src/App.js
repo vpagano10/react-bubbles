@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Route, Link, withRouter } from "react-router-dom";
 import ProtectedRoute from './components/ProtectedRoute';
 import Logout from './components/Logout';
 import { getToken } from './utils/api';
@@ -33,7 +33,7 @@ function App() {
   const signedIn = getToken();
 
   return (
-    <Router>
+    <>
       <Nav>
         <div>
           <PageTitle>Welcome to the Bubble App!</PageTitle>
@@ -50,11 +50,11 @@ function App() {
         <ProtectedRoute exact path='/bubblepage' component={BubblePage} />
         <ProtectedRoute exact path='/logout' component={Logout} />
       </div>
-    </Router>
+    </>
   );
 }
 
-export default App;
+export default withRouter(App);
 
 {/* 
   Build a PrivateRoute component that will 
