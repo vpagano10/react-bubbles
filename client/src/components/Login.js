@@ -1,6 +1,36 @@
 import React, { useState } from "react";
 import api from '../utils/api';
 
+import styled from 'styled-components';
+
+const PageTitle = styled.h1`
+  color: navy;
+  font-size: 3rem;
+`;
+const Form = styled.div`
+  margin: 0 auto;
+  width: 80%;
+`;
+const Input = styled.input`
+  margin: 0 auto;
+  padding: 1%;
+  width: 25%;
+`;
+const Button = styled.button`
+  margin: 0 auto;
+  padding: 1%;
+  width: 27.5%;
+  background-color: #6093ca;
+  border: 2px solid navy;
+  border-radius: 5px;
+  color: Navy;
+  &:hover {
+    background-color: lightblue;
+    color: white;
+    border: 2px solid #6093ca;
+  }
+`;
+
 const Login = (props) => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
@@ -32,26 +62,26 @@ const Login = (props) => {
   }
 
   return (
-    <>
-      <h1>Welcome to the Bubble App!</h1>
+    <Form>
+      <PageTitle>Login!</PageTitle>
       <form onSubmit={handleSubmit}>
-        <input
+        <Input
           type='text'
           name='username'
           placeholder='username'
           value={data.username}
           onChange={handleChange}
         /><br />
-        <input
+        <Input
           type='password'
           name='password'
           placeholder='password'
           value={data.password}
           onChange={handleChange}
         /><br />
-        <button type='submit'>Login</button>
+        <Button type='submit'>Login</Button>
       </form>
-    </>
+    </Form>
   );
 };
 
